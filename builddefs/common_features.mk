@@ -618,6 +618,17 @@ ifeq ($(strip $(CIE1931_CURVE)), yes)
     LED_TABLES := yes
 endif
 
+## start SignalRGB support
+# https://github.com/SRGBmods/QMK-Binaries/blob/main/GPL/qmk_firmware/builddefs/common_features.mk
+ifeq ($(strip $(SIGNALRGB_SUPPORT_ENABLE)), yes)
+    ifneq ($(strip $(VIA_ENABLE)), yes)
+    RAW_ENABLE := yes
+    SRC += $(QUANTUM_DIR)/signalrgb.c
+    OPT_DEFS += -DSIGNALRGB_SUPPORT_ENABLE
+    endif
+endif
+## end SignalRGB support
+
 ifeq ($(strip $(LED_TABLES)), yes)
     SRC += $(QUANTUM_DIR)/led_tables.c
 endif
