@@ -27,5 +27,11 @@
     "python.formatting.provider": "yapf",
     "[json]": {
 	    "editor.formatOnSave": false
-    }
+    },
+    "terminal.integrated.env.windows": {
+      "PATH": "C:\\Users\\mikro\\.azurelogicapps\\dependencies\\DotNetSDK;${env:PATH}"
+    },
+    "omnisharp.dotNetCliPaths": [
+      "C:\\Users\\mikro\\.azurelogicapps\\dependencies\\DotNetSDK"
+    ]
 }
