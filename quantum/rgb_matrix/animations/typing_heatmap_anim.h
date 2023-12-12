@@ -53,8 +53,12 @@ static bool decrease_heatmap_values;
 bool TYPING_HEATMAP(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
+    // MR: define rgb from the config to enable us to specify a backlight colour
+    RGB rgb = rgb_matrix_hsv_to_rgb(rgb_matrix_config.hsv);
+
     if (params->init) {
-        rgb_matrix_set_color_all(0, 0, 0);
+        //MR rgb_matrix_set_color_all(0, 0, 0); // Could we set 0,0,0 to be rgb_matrix_set_color_all(rgb.r, rgb.g, rgb.b)?
+        rgb_matrix_set_color_all(rgb.r, rgb.g, rgb.b);
         memset(g_rgb_frame_buffer, 0, sizeof g_rgb_frame_buffer);
     }
 
