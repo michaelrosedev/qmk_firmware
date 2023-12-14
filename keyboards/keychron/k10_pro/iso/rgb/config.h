@@ -40,6 +40,8 @@
 
 #    define LOW_BAT_IND_INDEX 99 // Space
 
+#    define CAPS_LOCK_INDEX 61 // CapsLock
+
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects
