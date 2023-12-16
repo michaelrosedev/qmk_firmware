@@ -68,6 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______,  _______,            _______          )
 };
 
+// ref https://github.com/qmk/qmk_firmware/compare/master...CsRic:qmk_firmware:obscurite_86_matrix
 // light for pressed keys
 bool pos_to_hold_l[RGB_MATRIX_LED_COUNT] = {0};
 
@@ -84,7 +85,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     uint8_t layer = get_highest_layer(layer_state);
     HSV hsv = rgb_matrix_get_hsv();
-    hsv.h += 130; //reverse colour
+    hsv.h += 130; //reverse colour //todo: random colour?
     RGB rgb = hsv_to_rgb(hsv);
 
     if (layer == WIN_FN) {
@@ -113,33 +114,3 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
     return false;
 }
-
-// // enable custom RGB matrix effects
-// void keyboard_post_init_user(void) {
-//     rgb_matrix_mode(RGB_MATRIX_CUSTOM_reactive_typing);
-// }
-
-// set number keys to red if caps lock is on
-// bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-//     if (host_keyboard_led_state().caps_lock) {
-//         rgb_matrix_set_color(CAPS_LOCK_INDEX, RGB_RED);
-//         // for (uint8_t i = led_min; i < led_max; i++) {
-//         //     if (g_led_config.flags[i] & LED_FLAG_KEYLIGHT) {
-//         //         rgb_matrix_set_color(i, RGB_RED);
-//         //     }
-//         // }
-//     }
-
-//     if (host_keyboard_led_state().num_lock) {
-//         rgb_matrix_set_color(NUM_LOCK_INDEX, RGB_RED);
-//     }
-//     //todo: where is the else?!
-
-//     //also potential to set the caps lock key backlight itself...
-//     // if (host_keyboard_led_state().caps_lock) {
-//     //     RGB_MATRIX_INDICATOR_SET_COLOR(5, 255, 255, 255); // assuming caps lock is at led #5
-//     // } else {
-//     //     RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0);
-//     // }
-//     return false;
-// }

@@ -361,7 +361,8 @@ static void rgb_task_render(uint8_t effect) {
     rgb_effect_params.init = (effect != rgb_last_effect) || (rgb_matrix_config.enable != rgb_last_enable);
     if (rgb_effect_params.flags != rgb_matrix_config.flags) {
         rgb_effect_params.flags = rgb_matrix_config.flags;
-        rgb_matrix_set_color_all(0, 0, 0);
+        //MR disable turning off all colours
+        //rgb_matrix_set_color_all(0, 0, 0);
     }
 
     // each effect can opt to do calculations
